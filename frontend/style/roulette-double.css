@@ -1,0 +1,124 @@
+:root {
+    --background-color: #0f1923;
+    --green-card-color: #00C74D;
+    --red-card-color: #f9305b;
+    --black-card-color: #2D3035;
+    --game-background-color: #1A242D;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+#roulette-double-game {
+    background-color: var(--game-background-color);
+}
+
+.select-amount-button {
+    color: white;
+    padding: 15px;
+    font-weight: 500;
+}
+
+.select-amount-button.red{
+    background-color: var(--red-card-color);
+}
+
+.select-amount-button.green {
+    background-color: var(--green-card-color);
+}
+
+.select-amount-button.black {
+    background-color: var(--black-card-color);
+}
+
+.multiply-amount{
+    color: white;
+    font-weight: 300;
+}
+
+.multiply-amount:hover {
+    color: white;
+    font-weight: 400;
+    background-color:var(--background-color);
+}
+
+.next-move {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    
+}
+
+.next-move::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 5px;
+    background-color: var(--red-card-color);
+    animation: progress-bar-notification 15s linear forwards;
+}
+
+@keyframes progress-bar-notification {
+    100% {
+        width: 0;
+    }
+}
+
+.roulette-container{
+    font-family: 'Titillium Web', sans-serif;
+    position:relative;
+    display:flex;
+    background-color: var(--background-color);
+    justify-content:center;
+    width:100%;
+    margin:0 auto;
+    overflow:hidden;
+}
+  
+.roulette-container .selector{
+    width: 5px;
+    border-radius: 5px;
+    background: white;
+    left:50%;
+    height:93px;
+    top: 10px;
+    transform:translate(-50%,0%);
+    position:absolute;
+    z-index:2;
+}
+  
+.roulette-container .wheel{
+    display:flex;
+}
+  
+.roulette-container .wheel .row{
+    display:flex;
+}
+
+.roulette-container .wheel .row .card{
+    height:75px;
+    width:75px;
+    margin:3px;
+    border-radius:8px;
+    border-bottom:3px solid rgba(0,0,0,0.2);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    font-size:1.5em;
+}
+
+.card.red{
+    background: var(--red-card-color);
+}
+
+.card.black{
+    background: var(--black-card-color);
+}
+
+.card.green{
+    background: var(--green-card-color);
+}

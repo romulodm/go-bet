@@ -5,14 +5,52 @@
         <link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
         <link href="./img/ico.png" rel="shortcut icon" type="image/x-icon">
         <link href="./style/app.css" rel="stylesheet">
-        <link href="./style/wheel-double.css" rel="stylesheet">
+        <link href="./style/roulette-double.css" rel="stylesheet">
+
+        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
         <title>Go Bet</title>
     </head>
     
     <body>
-        <div class='roulette-container'>
-            <div class='selector'></div>
-            <div class='wheel'></div>
+        <div class="w-full flex text-white justify-center p-2 bg-green-400">
+            <p class="font-semibold">Inscreva-se e receba um bônus de 500 GoCoins 🎁</p>
+        </div>
+
+        <div class="flex w-full items-center justify-center p-5">
+            <div id="roulette-double-game" class="flex flex-col items-center justify-center rounded-md p-3 w-full max-w-6xl">
+                
+                <div class="roulette-container p-4 rounded-md">
+                    <div class="next-move rounded-md mb-4">Próximo giro em: 10:00</div>
+                    <div class="selector"></div>
+                    <div class="wheel"></div>
+                </div>
+
+                <div class="w-full flex flex-col mt-4">
+                    <div class="w-full flex flex-row mb-5 gap-4">
+                        <input type="text" pattern="[0-9]*" inputmode="numeric" id="amount-bet-roulette-double" class="w-4/12 bg-gray-900 border border-gray-300 text-gray-200 sm:text-sm rounded-md block p-2.5" placeholder="Amount">
+                        
+                        <button class="multiply-amount w-3/12 border border-white rounded-md">1/2</button>
+
+                        <button class="multiply-amount w-3/12 border border-white rounded-md">2x</button>
+
+                        <button class="multiply-amount w-3/12 border border-white rounded-md">5x</button>
+                    
+                    </div>
+
+                    <div class="text-white mb-2">
+                        Select the color:
+                    </div>
+
+                    <div class="w-full flex justify-centertext-white gap-4">
+                        <button class="select-amount-button red w-4/12 rounded-md">2x</button>
+                        <button class="select-amount-button green w-4/12 rounded-md">14x</button>
+                        <button class="select-amount-button black  w-4/12 rounded-md">2x</button>
+                    </div>
+                    
+                    <button class="w-full text-white font-bold mt-4 bg-purple-700 p-4 rounded-md hover:bg-purple-800">Bet</button>
+
+                </div>
+            </div>
         </div>
     </body>
     
