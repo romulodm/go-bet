@@ -5,6 +5,6 @@ This is the front end of the casino project, it is a React application made so t
 
 <br>
 
-<img src ="https://i.imgur.com/Nr87OEk.png">
+<img src ="https://i.imgur.com/WK9MvzH.png">
 <p align="center">Figure 1: Roulette minigame</p>
 <br>
