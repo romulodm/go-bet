@@ -1,0 +1,10 @@
+@import "./theme/colors.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+#root {
+  background-color: var(--background-color);
+}

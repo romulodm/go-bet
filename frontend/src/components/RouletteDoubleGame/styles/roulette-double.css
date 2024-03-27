@@ -1,12 +1,4 @@
-:root {
-    --primary-color: #2563eb;
-    --background-color: #0f1923;
-    --green-card-color: #00C74D;
-    --red-card-color: #f9305b;
-    --black-card-color: #2D3035;
-    --game-background-color: #1A242D;
-    --lightgray-color: #8f8f8f;
-}
+@import "../../../theme/colors.css";
 
 *{
     box-sizing:border-box;
