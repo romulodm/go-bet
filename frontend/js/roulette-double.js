@@ -1,7 +1,7 @@
-const betButton = document.getElementById('roulette-double-bet-button');
+var betButton = document.getElementById('roulette-double-bet-button');
+var wheel = document.querySelector('.roulette-container .wheel');
 
 function setupWheel() {
-    var wheel = document.querySelector('.roulette-container .wheel'),
     row = "";
     
     row += "<div class='row'>";
@@ -28,41 +28,39 @@ function setupWheel() {
 }
 
 function spinWheel(roll) {
-    var wheel = document.querySelector('.roulette-container .wheel')
-    var order = [0, 11, 5, 10, 6, 9, 7, 8, 1, 14, 2, 13, 3, 12, 4]
+    var order = [0, 11, 5, 10, 6, 9, 7, 8, 1, 14, 2, 13, 3, 12, 4];
     var position = order.indexOf(roll);
-
-    var rows = 12
-    var card = 75 + 3 * 2
+  
+    var rows = 12;
+    var card = 75 + 3 * 2;
     var landingPosition = (rows * 15 * card) + (position * card);
-
-    var randomize = Math.floor(Math.random() * 75) - (75 / 2);
-
-    landingPosition = landingPosition + randomize;
-
-    var object = {
-        x: Math.floor(Math.random() * 50) / 100,
-        y: Math.floor(Math.random() * 20) / 100
+  
+    const randomize = Math.floor(Math.random() * 60); // variation fixed
+    const finalPosition = landingPosition + randomize;
+  
+    const object = {
+      x: Math.floor(Math.random() * 50) / 100,
+      y: Math.floor(Math.random() * 20) / 100,
     };
-
-    wheel.style.transitionTimingFunction = 'cubic-bezier(0,' + object.x + ',' + object.y + ',1)';
+  
+    wheel.style.transitionTimingFunction = `cubic-bezier(0,${object.x},${object.y},1)`;
     wheel.style.transitionDuration = '6s';
-    wheel.style.transform = 'translate3d(-' + landingPosition + 'px, 0px, 0px)';
-
-    setTimeout(function() {
-        wheel.style.transitionTimingFunction = '';
-        wheel.style.transitionDuration = '';
-
-        var resetTo = -(position * card + randomize);
-        wheel.style.transform = 'translate3d(' + resetTo + 'px, 0px, 0px)';
+    wheel.style.transform = `translate3d(-${finalPosition}px, 0px, 0px)`;
+  
+    setTimeout(() => {
+      wheel.style.transitionTimingFunction = '';
+      wheel.style.transitionDuration = '';
+      const resetTo = -(position * card + randomize);
+      wheel.style.transform = `translate3d(${resetTo}px, 0px, 0px)`;
     }, 6 * 1000);
-}
+  }
 
 document.addEventListener('DOMContentLoaded', function() {
     setupWheel();
 });
 
 betButton.addEventListener('click', function() {
-    console.log("oi");
-    spinWheel(2);
+    var num = Math.floor(Math.random() * 15);
+    console.log(num)
+    spinWheel(num);
 });
