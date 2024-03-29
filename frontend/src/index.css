@@ -4,7 +4,46 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  font-family: "Lato", sans-serif;
+}
 
 #root {
   background-color: var(--background-color);
+}
+
+.bg-primary-color {
+  background-color: var(--primary-color);
+}
+
+.bg-background-color {
+  background-color: var(--background-color);
+}
+
+.bg-redcard-color {
+  background-color: var(--red-card-color);
+}
+
+.bg-greencard-color {
+  background-color: var(--green-card-color);
+}
+
+.bg-blackcard-color {
+  background-color: var(--black-card-color);
+}
+
+.bg-game-color {
+  background-color: var(--game-background-color);
+}
+
+.bg-lightgray-color {
+  background-color: var(--lightgray-color);
+}
+
+.text-main-color {
+  color: var(--font-main-color);
+}
+
+#nav-hover:hover {
+  background-color: var(--hover-navbar-color);
 }
