@@ -1,9 +1,25 @@
 :root {
     --primary-color: #2563eb;
+    --roulette-selector-color: #ffffff;
+    --font-main-color: #ffffff;
+    --hover-navbar-color: #374151;
     --background-color: #0f1923;
     --green-card-color: #00C74D;
     --red-card-color: #f9305b;
     --black-card-color: #2D3035;
     --game-background-color: #1A242D;
     --lightgray-color: #8f8f8f;
+}
+
+[data-theme="light"] {
+    --primary-color: #2563eb;
+    --roulette-selector-color: #2563eb;
+    --font-main-color: #1f2937;
+    --hover-navbar-color: #d1d5db;
+    --background-color: #e5e7eb;
+    --green-card-color: #00C74D;
+    --red-card-color: #f9305b;
+    --black-card-color: #2D3035;
+    --game-background-color: #ffffff;
+    --lightgray-color: #353535;
 }
