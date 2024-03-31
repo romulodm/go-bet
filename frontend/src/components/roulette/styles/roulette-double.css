@@ -86,7 +86,7 @@
 .roulette-container .selector{
     width: 3px;
     border-radius: 5px;
-    background: white;
+    background: var(--roulette-selector-color);
     left:50%;
     height:93px;
     top: 10px;

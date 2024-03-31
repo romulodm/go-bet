@@ -40,7 +40,7 @@ export default function Roulette() {
           const card = 75 + 3 * 2;
           const landingPosition = (rows * 15 * card) + (position * card);
         
-          const randomize = Math.floor(Math.random() * 60); // variation fixed
+          const randomize =  Math.floor(Math.random() * 70) - 5; // variation
           const finalPosition = landingPosition + randomize;
         
           const object = {
