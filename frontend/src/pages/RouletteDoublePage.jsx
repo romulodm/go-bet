@@ -1,5 +1,5 @@
-import BetsMadedOnRouletteGame from "../components/RouletteDoubleGame/BetsMadedOnRouletteGame";
-import Roulette from "../components/RouletteDoubleGame/Roullete";
+import BetsMadedOnRouletteGame from "../components/roulette/BetsMadedOnRouletteGame";
+import Roulette from "../components/roulette/Roullete";
 
 export default function RouletteDoublePage() {
     return (
