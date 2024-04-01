@@ -70,7 +70,11 @@ export default function Roulette() {
     
         // Limpeza de eventos quando o componente é desmontado
         return () => {
-          betButton.removeEventListener('click');
+          betButton.removeEventListener('click', function() {
+            const num = Math.floor(Math.random() * 15);
+            console.log(num)
+            spinWheel(num);
+          });
         };
       }, []); // useEffect será executado apenas uma vez após a montagem inicial
 
@@ -99,7 +103,7 @@ export default function Roulette() {
                         Select the color:
                     </div>
 
-                    <div className="w-full flex justify-center text-white gap-4"> {/* Corrigido 'justify-centertext-white' para 'justify-center text-white' */}
+                    <div className="w-full flex justify-center text-white gap-4">
                         <button className="select-amount-button red w-4/12 rounded-md">2x</button>
                         <button className="select-amount-button green w-4/12 rounded-md">14x</button>
                         <button className="select-amount-button black w-4/12 rounded-md">2x</button>
