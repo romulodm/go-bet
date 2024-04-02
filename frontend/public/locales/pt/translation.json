@@ -1,0 +1,81 @@
+{
+    "announcement": {
+        "title": "Se inscreva e receba 500 GoCoins de bônus 🎁"
+    },
+    "navbar": {
+        "home": "Página inicial",
+        "roulette": "Roleta",
+        "signIn": "Entrar"
+    },
+    "carousel": {
+        "w-title": "Bem-vindo ao Go Bet!",
+        "w-content": "Cadastre-se e receba um bônus de até G$ 5.000!",
+        "w-btn": "Cadastre-se",
+        "w-t1": "Registrar",
+        "w-t2": "Obter bônus",
+        "w-t3": "Começar a ganhar",
+        "r-tittle": "Jogue com responsabilidade!",
+        "r-content": "Seja um jogador de sucesso.",
+        "r-btn": "Saiba mais",
+        "r-t1": "Leia dicas",
+        "r-t2": "Obtenha ideias",
+        "r-t3": "Descubra como jogar",
+        "j-tittle": "Tente a sorte no Jackpot!",
+        "j-content": "Concorra contra outros participantes.",
+        "j-btn": "Compre um bilhete",
+        "j-t1": "Compre um bilhete",
+        "j-t2": "Espere",
+        "j-t3": "Tenha sorte para ganhar todo o pote"
+    },
+    "technologies": {
+        "main-title": "Projetado para mudar a maneira como você utiliza cassino!",
+        "main-content": "Aqui na Go Bet focamos em tecnologia e inovação sem abrir mão da confiabilidade.",
+        "f-title": "Certificação SSL",
+        "f-content": "É um fato estabelecido há muito tempo que um leitor será distraído pelo conteúdo legível de uma página ao olhar para o seu layout.",
+        "s-title": "Auditável e justo",
+        "s-content": "É um fato estabelecido há muito tempo que um leitor será distraído pelo conteúdo legível de uma página ao olhar para o seu layout.",
+        "t-title": "Desempenho do jogo",
+        "t-content": "É um fato estabelecido há muito tempo que um leitor será distraído pelo conteúdo legível de uma página ao olhar para o seu layout."
+    },
+    "affiliate": {
+        "title": "Compartilhe seu link de afiliado!",
+        "btn": "Veja mais"
+    },
+    "newsletter": {
+        "title": "Quer receber notícias e bônus?",
+        "content": "Se inscreva em nossa newsletter e esteja por dentro de tudo.",
+        "btn": "Inscreva-se",
+        "input": "Seu email",
+        "spam": "Sem spam, você pode se desinscrever a qualquer momento."
+    },
+    "footer": {
+        "tech": "Tecnologia",
+        "architecture": "Arquitetura",
+        "system": "Sistema",
+        "legal": "Legal",
+        "priv": "Política de Privacidade",
+        "t&c": "Termos e Condições",
+        "fun": "Proporcionando diversão desde 2024"
+    },
+    "auth":{
+        "title-login": "Faça login na sua conta e comece a ganhar.",
+        "title-create": "Crie sua conta e comece a ganhar.",
+        "title-forgot": "Digite seu e-mail e siga as instruções.",
+        "title-code": "Insira o código enviado para o teu email.",
+        "title-newPass": "Insira sua nova senha.",
+        "u-input": "Usuário",
+        "e-input": "E-mail",
+        "p-input": "Senha",
+        "c-input": "Código",
+        "btn-login": "Entrar",
+        "forgot": "Esqueceu sua senha?",
+        "create": "Não tem uma conta?",
+        "no-forget": "Não esqueceu sua senha?",
+        "btn-create": "Criar agora",
+        "login": "Já tem uma conta?",
+        "btn-getStarded": "Começar",
+        "btn-confirm": "Confirmar",
+        "btn-cancel": "Cancelar",
+        "btn-resetPass": "Mude sua senha"
+    }
+}

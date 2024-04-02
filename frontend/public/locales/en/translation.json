@@ -1,0 +1,81 @@
+{
+    "announcement": {
+        "title": "Subscribe and receive a 500 GoCoins bonus 🎁"
+    },
+    "navbar": {
+        "home": "Home",
+        "roulette": "Roulette",
+        "signIn": "Sign in"
+    },
+    "carousel": {
+        "w-title": "Welcome to Go Bet!",
+        "w-content": "Sign up and receive a bonus of up to G$ 5.000!",
+        "w-btn": "Sign up",
+        "w-t1": "Register",
+        "w-t2": "Get bonus",
+        "w-t3": "Start win",
+        "r-tittle": "Play with responsibility!",
+        "r-content": "Be a successful player.",
+        "r-btn": "Learn more",
+        "r-t1": "Read tips",
+        "r-t2": "Get ideas",
+        "r-t3": "Discover how to play",
+        "j-tittle": "Try your luck at the Jackpot!",
+        "j-content": "Compete with other participants.",
+        "j-btn": "Buy ticket",
+        "j-t1": "Buy ticket",
+        "j-t2": "Wait",
+        "j-t3": "Be lucky to win all pot"
+    },
+    "technologies": {
+        "main-title": "Designed to change the way you use casino!",
+        "main-content": "Here at Go Bet we focus on technology and innovation without compromising on reliability.",
+        "f-title": "SSL Certification",
+        "f-content": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+        "s-title": "Auditable and fair",
+        "s-content": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+        "t-title": "Game performance",
+        "t-content": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout."
+    },
+    "affiliate": {
+        "title": "Share your affiliate link!",
+        "btn": "View more"
+    },
+    "newsletter": {
+        "title": "Want news and bonus?",
+        "content": "Subscribe in our newsletter and stay on top of everything.",
+        "btn": "Subscribe",
+        "input": "Your email",
+        "spam": "No spam, you can unsubscribe at any time."
+    },
+    "footer": {
+        "tech": "Technology",
+        "architecture": "Architecture",
+        "system": "System",
+        "legal": "Legal",
+        "priv": "Privacy Policy",
+        "t&c": "Terms & Condition",
+        "fun": "Providing fun since 2024"
+    },
+    "auth":{
+        "title-login": "Login to your account and start earning.",
+        "title-create": "Create your account and start earning.",
+        "title-forgot": "Enter your email and follow the instructions.",
+        "title-code": "Enter the code sent to your email.",
+        "title-newPass": "Enter your new password.",
+        "u-input": "User",
+        "e-input": "Email",
+        "p-input": "Password",
+        "c-input": "Code",
+        "btn-login": "Sign in",
+        "forgot": "Forgot your password?",
+        "create": "Don't have an account?",
+        "no-forget": "Haven't forgotten your password?",
+        "btn-create": "Create now",
+        "login": "Already have an account?",
+        "btn-getStarded": "Get started",
+        "btn-confirm": "Confirm",
+        "btn-cancel": "Cancel",
+        "btn-resetPass": "Reset password"
+    }
+}
