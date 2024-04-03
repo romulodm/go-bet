@@ -17,8 +17,10 @@
     top: 0;
     right: -100%;
     transition: 850ms;
-    z-index: 9990; 
+    z-index: 9990;
+    box-shadow: -5px 0 10px rgba(0, 0, 0, 0.4);
 }
+
 
 .nav-menu.active {
     right: 0;

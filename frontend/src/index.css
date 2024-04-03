@@ -12,6 +12,10 @@
   background-color: var(--background-color);
 }
 
+#footer {
+  bottom: 0;
+}
+
 .notification-area {
   position: absolute;
   bottom: 2px;
@@ -100,6 +104,25 @@
   }
 }
 
+#navbar-color {
+  background-color: var(--navbar-color);
+}
+
+#footer-color {
+  background-color: #1A242D;
+}
+
+.carousel-slide {
+  transition: all 1s ease-in-out;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.carousel-slide.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
 .bg-primary-color {
   background-color: var(--primary-color);
 }
@@ -134,4 +157,32 @@
 
 #nav-hover:hover {
   background-color: var(--hover-navbar-color);
+}
+
+.text-tech-title {
+  color: var(--title-tech-color)
+}
+
+.text-tech-content {
+  color: var(--content-tech-color)
+}
+
+.text-techCard-content {
+  color: var(--cardText-tech-color)
+}
+
+.bg-card-color {
+  background-color: var(--cardBg-tech-color);
+}
+
+.bg-cardIconBg-color {
+  background-color: var(--cardIconBg-tech-color);
+}
+
+.bg-cardIconText-color {
+  color: var(--cardIconText-tech-color);
+}
+
+.bg-cardIconBorder-color {
+  border-color: var(--cardIconBorder-tech-color);
 }
