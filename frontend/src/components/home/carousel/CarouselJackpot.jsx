@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import HowToRegOutlinedIcon from '@mui/icons-material/HowToRegOutlined';
 import SavingsOutlinedIcon from '@mui/icons-material/SavingsOutlined';
@@ -11,6 +12,8 @@ import AttachMoneyOutlinedIcon from '@mui/icons-material/AttachMoneyOutlined';
 import AuthenticationModal from '../../authentication/AuthenticationModal';
 
 export default function CarouselJackpot() {
+    const { t } = useTranslation();
+
     const [showAuthenticationModal, setShowAuthenticationModal] = useState(false);
     const showAuthentication = () => setShowAuthenticationModal(!showAuthenticationModal);
 
@@ -18,27 +21,26 @@ export default function CarouselJackpot() {
         <div className="flex flex-col rounded-md gap-5">
            
            <div className="flex flex-col gap-x-4 w-full">
-                <p className="text-white text-3xl sm:text-4xl lg:text-5xl font-bold">Try your luck at the Jackpot!</p>
-                <p className="text-white text-md lg:text-lg">Compete with other participants.</p>
+                <p className="text-white text-3xl sm:text-4xl lg:text-5xl font-bold">{t('carousel.j-tittle')}</p>
+                <p className="text-white text-md lg:text-lg">{t('carousel.j-content')}</p>
             </div>
             
-            <button onClick={showAuthentication} className="bg-white w-28 py-3 rounded-md font-semibold">Buy a ticket</button>
-
+            <button onClick={showAuthentication} className="bg-white w-40 py-3 rounded-md font-semibold">{t('carousel.j-btn')}</button>
            
-            <div className="flex flex-row flex-wrap items-center mt-3 gap-1 md:gap-4 text-white text-sm sm:text-lg">
+            <div className="flex flex-row flex-wrap items-center gap-1 md:gap-4 text-white text-sm sm:text-lg">
                 <div className="flex flex-row items-center gap-2">
                     <ConfirmationNumberOutlinedIcon/>
-                    <p>Buy a ticket</p>
+                    <p>{t('carousel.j-t1')}</p>
                 </div>
                 <ChevronRightOutlinedIcon />
                 <div className="flex flex-row items-center gap-2">
                     <TimerOutlinedIcon/>
-                    <p>Wait</p>
+                    <p>{t('carousel.j-t2')}</p>
                 </div>
                 <ChevronRightOutlinedIcon />
                 <div className="flex flex-row items-center gap-2">
                     <StarBorderOutlinedIcon/>
-                    <p>Be lucky to win all pot</p>
+                    <p>{t('carousel.j-t3')}</p>
                 </div>
             </div>
 
@@ -70,5 +72,5 @@ export default function CarouselJackpot() {
 
             {showAuthenticationModal && <AuthenticationModal whatToShow={"register"} setShowAuthenticationModal={setShowAuthenticationModal}/>}
         </div>
-      )
-}
+    );
+};

@@ -1,6 +1,9 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 export default function Newsletter() {
+    const { t } = useTranslation();
+
     return (
         <section>  
             <div className="relative m-5 bg-redcard-color rounded py-10 px-8 md:py-16 md:px-12 shadow-2xl overflow-hidden" data-aos="zoom-y-out">
@@ -34,8 +37,8 @@ export default function Newsletter() {
                 <div className="relative flex flex-col lg:flex-row justify-between items-center">
                 
                 <div className="text-center lg:text-left lg:max-w-xl">
-                    <h3 className="text-2xl font-bold text-white mb-1">Want news and bonus?</h3>
-                    <p className="text-gray-300 text-lg mb-6">Subscribe in our newsletter and stay on top of everything.</p>
+                    <h3 className="text-2xl font-bold text-white mb-1">{t('newsletter.title')}</h3>
+                    <p className="text-gray-300 text-lg mb-6">{t('newsletter.content')}</p>
                     
                     <form className="w-full lg:w-auto">
                         <div className="flex flex-row gap-3">
@@ -46,16 +49,16 @@ export default function Newsletter() {
                                 autoComplete="email"
                                 required
                                 className="min-w-0 flex-auto text-white rounded-md border-0 bg-white/5 px-3.5 py-2 shadow-sm ring-1 ring-inset ring-white/10 outline-none sm:text-sm"
-                                placeholder="Your email"
+                                placeholder={t('newsletter.input')}
                             />
                             <button
                                 type="submit"
                                 className="flex-none rounded-md bg-gray-900 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-gray-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
                             >
-                                Subscribe
+                                {t('newsletter.btn')}
                             </button>
                         </div>
-                        <p className="text-sm text-gray-300 mt-3">No spam, you can unsubscribe at any time.</p>
+                        <p className="flex text-sm justify-left text-gray-300 mt-3">{t('newsletter.spam')}</p>
                     </form>
                 </div>
                 </div>

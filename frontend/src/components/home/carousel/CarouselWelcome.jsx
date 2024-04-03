@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import HowToRegOutlinedIcon from '@mui/icons-material/HowToRegOutlined';
 import SavingsOutlinedIcon from '@mui/icons-material/SavingsOutlined';
@@ -7,6 +8,7 @@ import AttachMoneyOutlinedIcon from '@mui/icons-material/AttachMoneyOutlined';
 import AuthenticationModal from '../../authentication/AuthenticationModal';
 
 export default function CarouselWelcome() {
+    const { t } = useTranslation();
     const [showAuthenticationModal, setShowAuthenticationModal] = useState(false);
     const showAuthentication = () => setShowAuthenticationModal(!showAuthenticationModal);
 
@@ -14,27 +16,27 @@ export default function CarouselWelcome() {
         <div className="flex flex-col justify-between rounded-md gap-5">
            
            <div className="flex flex-col w-full">
-                <p className="text-white text-3xl sm:text-5xl font-bold">Welcome to Go Bet!</p>
-                <p className="text-white text-md sm:text-lg">Sign up and receive a bonus of up to G$ 5.000!</p>
+                <p className="text-white text-3xl sm:text-5xl font-bold">{t('carousel.w-title')}</p>
+                <p className="text-white text-md sm:text-lg">{t('carousel.w-content')}</p>
             </div>
             
-            <button onClick={showAuthentication} className="bg-white w-24 py-3 rounded-md font-semibold">Sign up</button>
+            <button onClick={showAuthentication} className="bg-white w-24 py-3 rounded-md font-semibold">{t('carousel.w-btn')}</button>
 
            
             <div className="flex flex-row flex-wrap items-center gap-2 md:gap-4 text-white text-sm sm:text-lg">
                 <div className="flex flex-row items-center gap-2">
                     <HowToRegOutlinedIcon/>
-                    <p>Register</p>
+                    <p>{t('carousel.w-t1')}</p>
                 </div>
                 <ChevronRightOutlinedIcon />
                 <div className="flex flex-row items-center gap-2">
                     <SavingsOutlinedIcon/>
-                    <p>Get bonus</p>
+                    <p>{t('carousel.w-t2')}</p>
                 </div>
                 <ChevronRightOutlinedIcon />
                 <div className="flex flex-row items-center gap-2">
                     <AttachMoneyOutlinedIcon/>
-                    <p>Start win</p>
+                    <p>{t('carousel.w-t3')}</p>
                 </div>
             </div>
 
@@ -70,5 +72,5 @@ export default function CarouselWelcome() {
 
             {showAuthenticationModal && <AuthenticationModal whatToShow={"register"} setShowAuthenticationModal={setShowAuthenticationModal}/>}
         </div>
-      )
-}
+    );
+};

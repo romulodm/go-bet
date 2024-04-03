@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useTranslation } from 'react-i18next';
 
 import Login from "./Login";
 import Register from "./Register";
@@ -34,6 +35,7 @@ const modalContentStyle = {
 };
 
 export default function AuthenticationModal(props) {
+    const { t } = useTranslation();
     const [openAlert, setOpen] = useState(true);
     const handleClose = () => {
         setOpen(false);
@@ -42,9 +44,9 @@ export default function AuthenticationModal(props) {
 
     const whatToShow = props.whatToShow;
 
-    const [showLogin, setShowLogin] = useState(whatToShow == "login" ? true : false);
-    const [showRegister, setShowRegister] = useState(whatToShow == "register" ? true : false);
-    const [showResetPassword, setShowResetPassword] = useState(whatToShow == "reset" ? true : false);
+    const [showLogin, setShowLogin] = useState(whatToShow === "login");
+    const [showRegister, setShowRegister] = useState(whatToShow === "register");
+    const [showResetPassword, setShowResetPassword] = useState(whatToShow === "reset");
 
     function showRegisterComponent() {
         setShowLogin(false);
@@ -66,8 +68,6 @@ export default function AuthenticationModal(props) {
         setShowLogin(true);
     };
 
-
-
     return (
         <Modal
             open={openAlert}
@@ -78,40 +78,40 @@ export default function AuthenticationModal(props) {
                 <Box sx={modalStyle} style={modalContentStyle}>
                     <div className="flex flex-col rounded-md bg-background-color py-10 px-5">
                         {showLogin && (
-                        <>
-                            <Login />
+                            <>
+                                <Login />
 
-                            <button onClick={showReset} className="flex justify-left w-32 mt-2 text-gray-500 text-xs hover:text-gray-300">
-                                <p>Forgot your password?</p>
-                            </button>
+                                <button onClick={showReset} className="flex justify-left w-32 mt-2 text-gray-500 text-xs hover:text-gray-300">
+                                    <p>{t('auth.forgot')}</p>
+                                </button>
 
-                            <div className="flex mt-4 text-sm w-full flex-row items-center justify-center text-main-color gap-2">
-                                <p>Don't have an account?</p>
-                                <button onClick={showRegisterComponent} className="text-blue-400 font-bold hover:text-blue-500">Create now</button>
-                            </div>
-                        </>
+                                <div className="flex mt-4 text-sm w-full flex-row items-center justify-center text-main-color gap-2">
+                                    <p>{t('auth.create')}</p>
+                                    <button onClick={showRegisterComponent} className="text-blue-400 font-bold hover:text-blue-500">{t('auth.btn-create')}</button>
+                                </div>
+                            </>
                         )}
 
                         {showRegister && (
-                        <>
-                            <Register />
+                            <>
+                                <Register />
 
-                            <div className="flex mt-4 text-sm w-full flex-row items-center justify-center text-main-color gap-2">
-                                <p>Already have an account?</p>
-                                <button onClick={showLoginComponent} className="text-rose-500 font-bold hover:text-rose-600">Sign in</button>
-                            </div>
-                        </>
+                                <div className="flex mt-4 text-sm w-full flex-row items-center justify-center text-main-color gap-2">
+                                    <p>{t('auth.login')}</p>
+                                    <button onClick={showLoginComponent} className="text-rose-500 font-bold hover:text-rose-600">{t('auth.btn-login')}</button>
+                                </div>
+                            </>
                         )}
 
                         {showResetPassword && (
-                        <>
-                            <ResetPassword />
+                            <>
+                                <ResetPassword />
 
-                            <div className="flex mt-4 text-sm w-full flex-row items-center justify-center text-main-color gap-2">
-                                <p>Haven't forgotten your password?</p>
-                                <button onClick={hideReset} className="text-blue-400 font-bold hover:text-blue-500">Sign in</button>
-                            </div>
-                        </>
+                                <div className="flex mt-4 text-sm w-full flex-row items-center justify-center text-main-color gap-2">
+                                    <p>{t('auth.no-forget')}</p>
+                                    <button onClick={hideReset} className="text-blue-400 font-bold hover:text-blue-500">{t('auth.btn-login')}</button>
+                                </div>
+                            </>
                         )}
                     </div>
                 </Box>

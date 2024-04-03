@@ -7,6 +7,7 @@ import LockIcon from '@mui/icons-material/Lock';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import CircularProgress from '@mui/material/CircularProgress';
+import { useTranslation } from "react-i18next";
 
 function generateRandomCode() {
     let code = "";
@@ -28,6 +29,8 @@ const style = {
 };
 
 export default function ResetPassword() {
+    const { t } = useTranslation();
+
     const [isLoading, setIsLoading] = useState(false);
 
     const [emailEnteredByUser, setEmailEnteredByUser] = useState("");
@@ -97,13 +100,13 @@ return (
             {(showEnterCodeBox && showNewPasswordBox == false) ? ( 
             <form className="w-full">
                 <div className="flex justify-center">
-                    <p className="text-main-color mb-4 text-md font-medium mt-5">Enter the code sent to your email.</p>
+                    <p className="text-main-color mb-4 text-md font-medium mt-5">{t('auth.title-code')}</p>
                 </div>
                                 
                 <div className="h-12 w-full border bg-game-color border-none rounded flex items-center mb-5">
                     <CodeIcon style={{ color: "rgba(153, 153, 153, 0.35)", marginLeft:"5px" }} />
                     <input
-                        placeholder="Code"
+                        placeholder={t('auth.c-input')}
                         type="text"
                         className="flex-1 text-main-color  bg-game-color min-w-40% px-4 border-none outline-none"
                         value={codeEnteredByUser} 
@@ -115,14 +118,14 @@ return (
                     <button className="border-none h-10 w-1/2 bg-red-500 rounded-md text-white cursor-pointer font-medium"  
                     onClick={cancelReset}
                     >
-                        Cancel
+                        {t('auth.btn-cancel')}
                     </button>
 
                     <button 
                         className="border-none h-10 w-1/2 bg-primary-color rounded-md text-white cursor-pointer font-medium hover:bg-blue-700" 
                         onClick={handleCheckResetCode}
                     >
-                        Confirm
+                        {t('auth.btn-confirm')}
                     </button>
                 </div>
             </form>
@@ -130,14 +133,14 @@ return (
             ) : (code == false && showNewPasswordBox == true) ? (
             <form className="w-full">
                 <div className="flex justify-center">
-                    <p className="text-main-color mb-4 text-md font-medium mt-5">Enter your new password.</p>
+                    <p className="text-main-color mb-4 text-md font-medium mt-5">{t('auth.title-newPass')}</p>
                 </div>
                 
                 <div className="h-12 w-full border bg-game-color border-none rounded flex items-center mb-5">
                     <LockIcon style={{ color: "rgba(153, 153, 153, 0.35)", marginLeft:"5px" }} />
                     <input
                         type={showPassword ? "text" : "password"}
-                        placeholder="Password"
+                        placeholder={t('auth.p-input')}
                         className="flex-1 text-main-color  min-w-40% px-4 bg-game-color border-none outline-none"
                         value={newPassword}
                         onChange={(e) => setNewPassword(e.target.value)}
@@ -165,7 +168,7 @@ return (
                         className="border-none h-10 w-1/2 bg-red-500 rounded-md text-white cursor-pointer font-medium"  
                         onClick={cancelReset}
                     >
-                        Cancel
+                        {t('auth.btn-cancel')}
                     </button>
 
                     <button 
@@ -177,24 +180,24 @@ return (
                                 <CircularProgress size={20} style={{fontSize: "2px"}} color="secondary"/>
                             </Box>
                         ) : (
-                            <p>Confirm</p>
+                            <p>{t('auth.btn-confirm')}</p>
                         )}
                     </button>
                 </div>
             </form>
 
             ) : (
-            <form>
+            <form className="w-full">
                 <div className="flex justify-center">
-                    <p className="text-main-color mb-4 text-md font-medium mt-5">Enter your email and follow the instructions.</p>
+                    <p className="text-main-color mb-4 text-md font-medium mt-5">{t('auth.title-forgot')}</p>
                 </div>
 
                 <div className="h-12 w-full border bg-game-color border-none rounded flex items-center mb-5">
                     <EmailIcon style={{ color: "rgba(153, 153, 153, 0.35)", marginLeft:"5px" }} />
                     <input
-                        placeholder="E-mail"
+                        placeholder={t('auth.e-input')}
                         type="text"
-                        className="flex-1 text-main-color bg-game-color min-w-40% px-4 border-none outline-none"
+                        className="flex-1 text-main-color bg-game-color px-4 border-none outline-none w-full"
                         value={emailEnteredByUser}
                         onChange={(e) => setEmailEnteredByUser(e.target.value)}
                     />
@@ -203,7 +206,7 @@ return (
                 <button
                     disabled={isLoading}
                     type="submit"
-                    className="flex items-center w-full h-12 justify-center rounded-md bg-primary-color px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                    className="w-full h-12 justify-center rounded-md bg-primary-color px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                     onClick={handleSubmitEmailEnteredByUser || code}
                 >
                     {isLoading ? (
@@ -211,7 +214,7 @@ return (
                             <CircularProgress size={20} style={{fontSize: "2px"}} color="secondary"/>
                         </Box>
                     ) : (
-                        <p>Reset password</p>
+                        <p>{t('auth.btn-resetPass')}</p>
                     )}
                 </button>
             </form>
