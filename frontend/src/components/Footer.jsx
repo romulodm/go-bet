@@ -42,7 +42,7 @@ export default function Footer() {
             <div className="flex flex-row justify-between">
                 <div className="flex items-center flex-row gap-3">
                     <img src="./ico.png"></img>
-                    <p className="text-sm"><p className="font-bold text-lg">Go Bet Inc.</p>{t('footer.fun')}</p>
+                    <div className="text-sm"><p className="font-bold text-lg">Go Bet Inc.</p>{t('footer.fun')}</div>
                 </div>
                 <div className="flex items-center flex-row gap-3">
                     <a href="https://github.com/romulodm" target="_blank" className="p-4 rounded-md bg-gray-700 hover:bg-gray-600">
