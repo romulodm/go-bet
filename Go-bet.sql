@@ -3,9 +3,9 @@
 CREATE TABLE "users" (
   "id" bigserial PRIMARY KEY,
   "username" varchar UNIQUE NOT NULL,
-  "email" varchar UNIQUE NOT NULL,
-  "phone" varchar,
-  "password" varchar NOT NULL,
+  "email" varchar(200) UNIQUE NOT NULL,
+  "phone" varchar(16),
+  "password" varchar(50) NOT NULL,
   "affiliated" bool DEFAULT false,
   "created_at" timestamp DEFAULT (now()),
   "updated_at" timestamp
@@ -20,12 +20,12 @@ CREATE TABLE "user_balance" (
 
 CREATE TABLE "user_info" (
   "user_id" bigint,
-  "birtdate" date,
+  "birthdate" date,
   "cpf" varchar,
   "country" varchar,
   "uf" varchar,
   "cep" varchar,
-  "address" varcar,
+  "address" varchar,
   "updated_at" timestamp
 );
 
@@ -60,7 +60,7 @@ CREATE TABLE "transactions" (
 );
 
 CREATE TABLE "promotions" (
-  "id" varchar NOT NULL,
+  "id" bigserial NOT NULL UNIQUE,
   "bonus" decimal NOT NULL,
   "quantity" int NOT NULL,
   "created_at" timestamp DEFAULT (now())
@@ -72,17 +72,9 @@ CREATE TABLE "promotions_claimed" (
   "created_at" timestamp DEFAULT (now())
 );
 
-CREATE INDEX ON "users" ("email");
-
-CREATE INDEX ON "users" ("username");
-
 CREATE INDEX ON "user_balance" ("user_id");
 
 CREATE INDEX ON "user_info" ("user_id");
-
-CREATE INDEX ON "bets" ("user_id");
-
-CREATE INDEX ON "bets" ("game_id");
 
 CREATE INDEX ON "transactions" ("user_id");
 
