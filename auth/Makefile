@@ -6,4 +6,4 @@ tidy:
 	go mod vendor
 
 proto-gen: proto/auth.proto
-    protoc -I proto --go-grpc_out=plugins=grpc:proto/ proto/auth.proto
+    protoc -I proto --go-grpc_out=plugins=grpc:pb/ proto/auth.proto

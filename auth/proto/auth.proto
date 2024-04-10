@@ -2,9 +2,13 @@ syntax = "proto3";
 
 package authentication;
 
-import "user.proto";
-
 option go_package = "github.com/romulodm/go-bet/authentication";
+
+message User {
+  string username = 1;
+  string email = 2;
+  string password = 3;
+}
 
 message LoginRequest {
   string email = 1;
