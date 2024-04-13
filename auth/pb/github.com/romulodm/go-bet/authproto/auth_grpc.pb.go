@@ -4,7 +4,7 @@
 // - protoc             v5.26.0
 // source: auth.proto
 
-package authentication
+package authproto
 
 import (
 	context "context"
@@ -38,7 +38,7 @@ func NewAuthenticationServiceClient(cc grpc.ClientConnInterface) AuthenticationS
 
 func (c *authenticationServiceClient) Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*LoginResponse, error) {
 	out := new(LoginResponse)
-	err := c.cc.Invoke(ctx, "/authentication.AuthenticationService/Login", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/authproto.AuthenticationService/Login", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -47,7 +47,7 @@ func (c *authenticationServiceClient) Login(ctx context.Context, in *LoginReques
 
 func (c *authenticationServiceClient) Register(ctx context.Context, in *RegisterRequest, opts ...grpc.CallOption) (*RegisterResponse, error) {
 	out := new(RegisterResponse)
-	err := c.cc.Invoke(ctx, "/authentication.AuthenticationService/Register", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/authproto.AuthenticationService/Register", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -56,7 +56,7 @@ func (c *authenticationServiceClient) Register(ctx context.Context, in *Register
 
 func (c *authenticationServiceClient) ValidateToken(ctx context.Context, in *ValidateTokenRequest, opts ...grpc.CallOption) (*ValidateTokenResponse, error) {
 	out := new(ValidateTokenResponse)
-	err := c.cc.Invoke(ctx, "/authentication.AuthenticationService/ValidateToken", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/authproto.AuthenticationService/ValidateToken", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -65,7 +65,7 @@ func (c *authenticationServiceClient) ValidateToken(ctx context.Context, in *Val
 
 func (c *authenticationServiceClient) UpdateCredentials(ctx context.Context, in *UpdateCredentialsRequest, opts ...grpc.CallOption) (*UpdateCredentialsRequest, error) {
 	out := new(UpdateCredentialsRequest)
-	err := c.cc.Invoke(ctx, "/authentication.AuthenticationService/UpdateCredentials", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/authproto.AuthenticationService/UpdateCredentials", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -122,7 +122,7 @@ func _AuthenticationService_Login_Handler(srv interface{}, ctx context.Context, 
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/authentication.AuthenticationService/Login",
+		FullMethod: "/authproto.AuthenticationService/Login",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(AuthenticationServiceServer).Login(ctx, req.(*LoginRequest))
@@ -140,7 +140,7 @@ func _AuthenticationService_Register_Handler(srv interface{}, ctx context.Contex
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/authentication.AuthenticationService/Register",
+		FullMethod: "/authproto.AuthenticationService/Register",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(AuthenticationServiceServer).Register(ctx, req.(*RegisterRequest))
@@ -158,7 +158,7 @@ func _AuthenticationService_ValidateToken_Handler(srv interface{}, ctx context.C
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/authentication.AuthenticationService/ValidateToken",
+		FullMethod: "/authproto.AuthenticationService/ValidateToken",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(AuthenticationServiceServer).ValidateToken(ctx, req.(*ValidateTokenRequest))
@@ -176,7 +176,7 @@ func _AuthenticationService_UpdateCredentials_Handler(srv interface{}, ctx conte
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/authentication.AuthenticationService/UpdateCredentials",
+		FullMethod: "/authproto.AuthenticationService/UpdateCredentials",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(AuthenticationServiceServer).UpdateCredentials(ctx, req.(*UpdateCredentialsRequest))
@@ -188,7 +188,7 @@ func _AuthenticationService_UpdateCredentials_Handler(srv interface{}, ctx conte
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var AuthenticationService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "authentication.AuthenticationService",
+	ServiceName: "authproto.AuthenticationService",
 	HandlerType: (*AuthenticationServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
