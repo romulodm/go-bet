@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package pb;
+
+import "login_user.proto";
+import "register_user.proto";
+import "update_user.proto";
+import "verify_token.proto";
+import "verify_email.proto";
+
+option go_package = "github.com/romulodm/gobet/auth/pb";
+
+service AuthenticationService {
+    rpc Login(LoginRequest) returns (LoginResponse);
+  
+    rpc Register(RegisterRequest) returns (RegisterResponse);
+  
+    rpc VerifyToken(VerifyEmailRequest) returns (VerifyEmailResponse);
+
+    rpc VerifyEmail(VerifyEmailRequest) returns (VerifyTokenResponse);
+  
+    rpc UpdateCredentials(UpdateCredentialsRequest) returns (UpdateCredentialsRequest);
+  }

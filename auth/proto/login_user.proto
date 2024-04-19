@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package pb;
+
+import "user.proto";
+
+option go_package = "github.com/romulodm/gobet/auth/pb";
+
+message LoginRequest {
+    string email = 1;
+    string password = 2;
+}
+  
+message LoginResponse {
+    User user = 1;
+    string token = 2;
+}

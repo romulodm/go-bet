@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package pb;
+
+option go_package = "github.com/romulodm/gobet/auth/pb";
+
+message VerifyEmailRequest {
+    string email = 1;
+}
+
+message VerifyEmailResponse {
+    bool error = 1;
+}
