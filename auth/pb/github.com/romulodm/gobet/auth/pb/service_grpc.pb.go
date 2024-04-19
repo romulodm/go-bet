@@ -26,7 +26,7 @@ type AuthenticationServiceClient interface {
 	Register(ctx context.Context, in *RegisterRequest, opts ...grpc.CallOption) (*RegisterResponse, error)
 	VerifyToken(ctx context.Context, in *VerifyTokenRequest, opts ...grpc.CallOption) (*VerifyTokenResponse, error)
 	VerifyEmail(ctx context.Context, in *VerifyEmailRequest, opts ...grpc.CallOption) (*VerifyEmailResponse, error)
-	UpdateCredentials(ctx context.Context, in *UpdateCredentialsRequest, opts ...grpc.CallOption) (*UpdateCredentialsRequest, error)
+	UpdateCredentials(ctx context.Context, in *UpdateCredentialsRequest, opts ...grpc.CallOption) (*UpdateCredentialsResponse, error)
 }
 
 type authenticationServiceClient struct {
@@ -73,8 +73,8 @@ func (c *authenticationServiceClient) VerifyEmail(ctx context.Context, in *Verif
 	return out, nil
 }
 
-func (c *authenticationServiceClient) UpdateCredentials(ctx context.Context, in *UpdateCredentialsRequest, opts ...grpc.CallOption) (*UpdateCredentialsRequest, error) {
-	out := new(UpdateCredentialsRequest)
+func (c *authenticationServiceClient) UpdateCredentials(ctx context.Context, in *UpdateCredentialsRequest, opts ...grpc.CallOption) (*UpdateCredentialsResponse, error) {
+	out := new(UpdateCredentialsResponse)
 	err := c.cc.Invoke(ctx, "/pb.AuthenticationService/UpdateCredentials", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -90,7 +90,7 @@ type AuthenticationServiceServer interface {
 	Register(context.Context, *RegisterRequest) (*RegisterResponse, error)
 	VerifyToken(context.Context, *VerifyTokenRequest) (*VerifyTokenResponse, error)
 	VerifyEmail(context.Context, *VerifyEmailRequest) (*VerifyEmailResponse, error)
-	UpdateCredentials(context.Context, *UpdateCredentialsRequest) (*UpdateCredentialsRequest, error)
+	UpdateCredentials(context.Context, *UpdateCredentialsRequest) (*UpdateCredentialsResponse, error)
 	mustEmbedUnimplementedAuthenticationServiceServer()
 }
 
@@ -110,7 +110,7 @@ func (UnimplementedAuthenticationServiceServer) VerifyToken(context.Context, *Ve
 func (UnimplementedAuthenticationServiceServer) VerifyEmail(context.Context, *VerifyEmailRequest) (*VerifyEmailResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method VerifyEmail not implemented")
 }
-func (UnimplementedAuthenticationServiceServer) UpdateCredentials(context.Context, *UpdateCredentialsRequest) (*UpdateCredentialsRequest, error) {
+func (UnimplementedAuthenticationServiceServer) UpdateCredentials(context.Context, *UpdateCredentialsRequest) (*UpdateCredentialsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateCredentials not implemented")
 }
 func (UnimplementedAuthenticationServiceServer) mustEmbedUnimplementedAuthenticationServiceServer() {}

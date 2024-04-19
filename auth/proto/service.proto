@@ -19,5 +19,5 @@ service AuthenticationService {
 
     rpc VerifyEmail(VerifyEmailRequest) returns (VerifyEmailResponse);
   
-    rpc UpdateCredentials(UpdateCredentialsRequest) returns (UpdateCredentialsRequest);
+    rpc UpdateCredentials(UpdateCredentialsRequest) returns (UpdateCredentialsResponse);
   }
