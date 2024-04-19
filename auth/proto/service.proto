@@ -15,7 +15,7 @@ service AuthenticationService {
   
     rpc Register(RegisterRequest) returns (RegisterResponse);
   
-    rpc VerifyToken(VerifyEmailRequest) returns (VerifyEmailResponse);
+    rpc VerifyToken(VerifyTokenRequest) returns (VerifyTokenResponse);
 
     rpc VerifyEmail(VerifyEmailRequest) returns (VerifyEmailResponse);
   

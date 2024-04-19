@@ -38,9 +38,9 @@ var file_service_proto_rawDesc = []byte{
 	0x65, 0x67, 0x69, 0x73, 0x74, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x14,
 	0x2e, 0x70, 0x62, 0x2e, 0x52, 0x65, 0x67, 0x69, 0x73, 0x74, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70,
 	0x6f, 0x6e, 0x73, 0x65, 0x12, 0x3e, 0x0a, 0x0b, 0x56, 0x65, 0x72, 0x69, 0x66, 0x79, 0x54, 0x6f,
-	0x6b, 0x65, 0x6e, 0x12, 0x16, 0x2e, 0x70, 0x62, 0x2e, 0x56, 0x65, 0x72, 0x69, 0x66, 0x79, 0x45,
-	0x6d, 0x61, 0x69, 0x6c, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x17, 0x2e, 0x70, 0x62,
-	0x2e, 0x56, 0x65, 0x72, 0x69, 0x66, 0x79, 0x45, 0x6d, 0x61, 0x69, 0x6c, 0x52, 0x65, 0x73, 0x70,
+	0x6b, 0x65, 0x6e, 0x12, 0x16, 0x2e, 0x70, 0x62, 0x2e, 0x56, 0x65, 0x72, 0x69, 0x66, 0x79, 0x54,
+	0x6f, 0x6b, 0x65, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x17, 0x2e, 0x70, 0x62,
+	0x2e, 0x56, 0x65, 0x72, 0x69, 0x66, 0x79, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x52, 0x65, 0x73, 0x70,
 	0x6f, 0x6e, 0x73, 0x65, 0x12, 0x3e, 0x0a, 0x0b, 0x56, 0x65, 0x72, 0x69, 0x66, 0x79, 0x45, 0x6d,
 	0x61, 0x69, 0x6c, 0x12, 0x16, 0x2e, 0x70, 0x62, 0x2e, 0x56, 0x65, 0x72, 0x69, 0x66, 0x79, 0x45,
 	0x6d, 0x61, 0x69, 0x6c, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x17, 0x2e, 0x70, 0x62,
@@ -59,23 +59,25 @@ var file_service_proto_rawDesc = []byte{
 var file_service_proto_goTypes = []interface{}{
 	(*LoginRequest)(nil),             // 0: pb.LoginRequest
 	(*RegisterRequest)(nil),          // 1: pb.RegisterRequest
-	(*VerifyEmailRequest)(nil),       // 2: pb.VerifyEmailRequest
-	(*UpdateCredentialsRequest)(nil), // 3: pb.UpdateCredentialsRequest
-	(*LoginResponse)(nil),            // 4: pb.LoginResponse
-	(*RegisterResponse)(nil),         // 5: pb.RegisterResponse
-	(*VerifyEmailResponse)(nil),      // 6: pb.VerifyEmailResponse
+	(*VerifyTokenRequest)(nil),       // 2: pb.VerifyTokenRequest
+	(*VerifyEmailRequest)(nil),       // 3: pb.VerifyEmailRequest
+	(*UpdateCredentialsRequest)(nil), // 4: pb.UpdateCredentialsRequest
+	(*LoginResponse)(nil),            // 5: pb.LoginResponse
+	(*RegisterResponse)(nil),         // 6: pb.RegisterResponse
+	(*VerifyTokenResponse)(nil),      // 7: pb.VerifyTokenResponse
+	(*VerifyEmailResponse)(nil),      // 8: pb.VerifyEmailResponse
 }
 var file_service_proto_depIdxs = []int32{
 	0, // 0: pb.AuthenticationService.Login:input_type -> pb.LoginRequest
 	1, // 1: pb.AuthenticationService.Register:input_type -> pb.RegisterRequest
-	2, // 2: pb.AuthenticationService.VerifyToken:input_type -> pb.VerifyEmailRequest
-	2, // 3: pb.AuthenticationService.VerifyEmail:input_type -> pb.VerifyEmailRequest
-	3, // 4: pb.AuthenticationService.UpdateCredentials:input_type -> pb.UpdateCredentialsRequest
-	4, // 5: pb.AuthenticationService.Login:output_type -> pb.LoginResponse
-	5, // 6: pb.AuthenticationService.Register:output_type -> pb.RegisterResponse
-	6, // 7: pb.AuthenticationService.VerifyToken:output_type -> pb.VerifyEmailResponse
-	6, // 8: pb.AuthenticationService.VerifyEmail:output_type -> pb.VerifyEmailResponse
-	3, // 9: pb.AuthenticationService.UpdateCredentials:output_type -> pb.UpdateCredentialsRequest
+	2, // 2: pb.AuthenticationService.VerifyToken:input_type -> pb.VerifyTokenRequest
+	3, // 3: pb.AuthenticationService.VerifyEmail:input_type -> pb.VerifyEmailRequest
+	4, // 4: pb.AuthenticationService.UpdateCredentials:input_type -> pb.UpdateCredentialsRequest
+	5, // 5: pb.AuthenticationService.Login:output_type -> pb.LoginResponse
+	6, // 6: pb.AuthenticationService.Register:output_type -> pb.RegisterResponse
+	7, // 7: pb.AuthenticationService.VerifyToken:output_type -> pb.VerifyTokenResponse
+	8, // 8: pb.AuthenticationService.VerifyEmail:output_type -> pb.VerifyEmailResponse
+	4, // 9: pb.AuthenticationService.UpdateCredentials:output_type -> pb.UpdateCredentialsRequest
 	5, // [5:10] is the sub-list for method output_type
 	0, // [0:5] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name

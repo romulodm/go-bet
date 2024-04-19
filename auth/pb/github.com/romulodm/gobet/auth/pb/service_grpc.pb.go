@@ -24,7 +24,7 @@ const _ = grpc.SupportPackageIsVersion7
 type AuthenticationServiceClient interface {
 	Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*LoginResponse, error)
 	Register(ctx context.Context, in *RegisterRequest, opts ...grpc.CallOption) (*RegisterResponse, error)
-	VerifyToken(ctx context.Context, in *VerifyEmailRequest, opts ...grpc.CallOption) (*VerifyEmailResponse, error)
+	VerifyToken(ctx context.Context, in *VerifyTokenRequest, opts ...grpc.CallOption) (*VerifyTokenResponse, error)
 	VerifyEmail(ctx context.Context, in *VerifyEmailRequest, opts ...grpc.CallOption) (*VerifyEmailResponse, error)
 	UpdateCredentials(ctx context.Context, in *UpdateCredentialsRequest, opts ...grpc.CallOption) (*UpdateCredentialsRequest, error)
 }
@@ -55,8 +55,8 @@ func (c *authenticationServiceClient) Register(ctx context.Context, in *Register
 	return out, nil
 }
 
-func (c *authenticationServiceClient) VerifyToken(ctx context.Context, in *VerifyEmailRequest, opts ...grpc.CallOption) (*VerifyEmailResponse, error) {
-	out := new(VerifyEmailResponse)
+func (c *authenticationServiceClient) VerifyToken(ctx context.Context, in *VerifyTokenRequest, opts ...grpc.CallOption) (*VerifyTokenResponse, error) {
+	out := new(VerifyTokenResponse)
 	err := c.cc.Invoke(ctx, "/pb.AuthenticationService/VerifyToken", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -88,7 +88,7 @@ func (c *authenticationServiceClient) UpdateCredentials(ctx context.Context, in 
 type AuthenticationServiceServer interface {
 	Login(context.Context, *LoginRequest) (*LoginResponse, error)
 	Register(context.Context, *RegisterRequest) (*RegisterResponse, error)
-	VerifyToken(context.Context, *VerifyEmailRequest) (*VerifyEmailResponse, error)
+	VerifyToken(context.Context, *VerifyTokenRequest) (*VerifyTokenResponse, error)
 	VerifyEmail(context.Context, *VerifyEmailRequest) (*VerifyEmailResponse, error)
 	UpdateCredentials(context.Context, *UpdateCredentialsRequest) (*UpdateCredentialsRequest, error)
 	mustEmbedUnimplementedAuthenticationServiceServer()
@@ -104,7 +104,7 @@ func (UnimplementedAuthenticationServiceServer) Login(context.Context, *LoginReq
 func (UnimplementedAuthenticationServiceServer) Register(context.Context, *RegisterRequest) (*RegisterResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Register not implemented")
 }
-func (UnimplementedAuthenticationServiceServer) VerifyToken(context.Context, *VerifyEmailRequest) (*VerifyEmailResponse, error) {
+func (UnimplementedAuthenticationServiceServer) VerifyToken(context.Context, *VerifyTokenRequest) (*VerifyTokenResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method VerifyToken not implemented")
 }
 func (UnimplementedAuthenticationServiceServer) VerifyEmail(context.Context, *VerifyEmailRequest) (*VerifyEmailResponse, error) {
@@ -163,7 +163,7 @@ func _AuthenticationService_Register_Handler(srv interface{}, ctx context.Contex
 }
 
 func _AuthenticationService_VerifyToken_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(VerifyEmailRequest)
+	in := new(VerifyTokenRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -175,7 +175,7 @@ func _AuthenticationService_VerifyToken_Handler(srv interface{}, ctx context.Con
 		FullMethod: "/pb.AuthenticationService/VerifyToken",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthenticationServiceServer).VerifyToken(ctx, req.(*VerifyEmailRequest))
+		return srv.(AuthenticationServiceServer).VerifyToken(ctx, req.(*VerifyTokenRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
