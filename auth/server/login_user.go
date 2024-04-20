@@ -3,7 +3,6 @@ package server
 import (
 	"context"
 	"errors"
-	"fmt"
 
 	db "github.com/romulodm/go-bet/auth/database/sqlc"
 	"github.com/romulodm/go-bet/auth/pb/github.com/romulodm/gobet/auth/pb"
@@ -14,8 +13,6 @@ import (
 )
 
 func (server *Server) Login(ctx context.Context, req *pb.LoginRequest) (*pb.LoginResponse, error) {
-	fmt.Print(req.GetEmail())
-
 	violations := validateLoginRequest(req)
 	if violations != nil {
 		return nil, invalidArgumentError(violations)
@@ -24,15 +21,14 @@ func (server *Server) Login(ctx context.Context, req *pb.LoginRequest) (*pb.Logi
 	user, err := server.store.GetUserByEmail(ctx, req.GetEmail())
 	if err != nil {
 		if errors.Is(err, db.ErrNotFound) {
-			fmt.Print("Aqui")
 			return nil, status.Errorf(codes.NotFound, "user not found")
 		}
 		return nil, status.Errorf(codes.Internal, "failed on server")
 	}
 
-	err = utils.CheckPassword(user.Password, req.Password)
+	err = utils.CheckPassword(req.Password, user.Password)
 	if err != nil {
-		return nil, status.Errorf(codes.NotFound, "incorrect password")
+		return nil, status.Errorf(codes.InvalidArgument, "incorrect password")
 	}
 
 	accessToken, err := server.tokenManager.Generate(
