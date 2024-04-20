@@ -2,53 +2,34 @@ package config
 
 import (
 	"fmt"
-	"os"
-	"path/filepath"
 	"time"
 
-	"github.com/joho/godotenv"
+	"github.com/spf13/viper"
 )
 
 type Config struct {
-	GRPCServerAddress string
-	DBDriver          string
-	DBHost            string
-	DBPort            string
-	DBUser            string
-	DBPassword        string
-	DBName            string
-	JWTSecretKey      []byte
-	JWTTokenExpiry    time.Duration
+	GRPCServerAddress     string        `mapstructure:"GRPC_SERVER_ADDRESS"`
+	DBDriver              string        `mapstructure:"DB_DRIVER"`
+	DBHost                string        `mapstructure:"DB_HOST"`
+	DBPort                string        `mapstructure:"DB_PORT"`
+	DBUser                string        `mapstructure:"DB_USER"`
+	DBPassword            string        `mapstructure:"DB_PASSWORD"`
+	DBName                string        `mapstructure:"DB_NAME"`
+	JWTSecretKey          string        `mapstructure:"JWT_SECRET_KEY"`
+	JWTAccessTokenExpiry  time.Duration `mapstructure:"ACCESS_JWT_DURATION"`
+	JWTRefreshTokenExpiry time.Duration `mapstructure:"REFRESH_JWT_DURATION"`
 }
 
 func LoadConfig() (config Config, err error) {
-	absPath, err := filepath.Abs("./app.env")
+	viper.SetConfigFile("./app.env")
+
+	err = viper.ReadInConfig()
 	if err != nil {
-		return config, fmt.Errorf("error on absolute path: %v", err)
+		return
 	}
 
-	err = godotenv.Load(absPath)
-	if err != nil {
-		return config, fmt.Errorf("error on load enviroment variables: %v", err)
-	}
-
-	config.GRPCServerAddress = os.Getenv("GRPC_SERVER_ADDRESS")
-	config.DBDriver = os.Getenv("DB_DRIVER")
-	config.DBHost = os.Getenv("DB_HOST")
-	config.DBPort = os.Getenv("DB_PORT")
-	config.DBUser = os.Getenv("DB_USER")
-	config.DBPassword = os.Getenv("DB_PASSWORD")
-	config.DBName = os.Getenv("DB_NAME")
-	config.JWTSecretKey = []byte(os.Getenv("JWT_SECRET_KEY"))
-
-	jwtDurationString := os.Getenv("JWT_DURATION")
-	jwtDuration, err := time.ParseDuration(jwtDurationString)
-	if err != nil {
-		return config, fmt.Errorf("error parsing JWT token expiry duration: %v", err)
-	}
-	config.JWTTokenExpiry = jwtDuration
-
-	return config, nil
+	err = viper.Unmarshal(&config)
+	return
 }
 
 func (cfg Config) GetDatabaseURL() string {
