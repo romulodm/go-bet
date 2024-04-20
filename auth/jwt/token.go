@@ -14,33 +14,35 @@ var (
 )
 
 type Manager struct {
-	secretKey     []byte
-	tokenDuration time.Duration
-	keyFunc       func(token *jwt.Token) (interface{}, error)
+	secretKey []byte
+	keyFunc   func(token *jwt.Token) (interface{}, error)
 }
 
-func NewManager(secretKey []byte, tokenDuration time.Duration) *Manager {
+func NewManager(secretKey []byte) *Manager {
 	return &Manager{
-		secretKey:     secretKey,
-		tokenDuration: tokenDuration,
+		secretKey: secretKey,
 		keyFunc: func(token *jwt.Token) (interface{}, error) {
 			return secretKey, nil
 		},
 	}
 }
 
-func (m *Manager) Generate() (string, error) {
-	token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
-		"expiresAt": &jwt.NumericDate{Time: time.Now().Add(m.tokenDuration)},
-	})
+func (m *Manager) Generate(username string, userId int, duration time.Duration) (string, error) {
+	payload, err := NewPayload(username, userId, duration)
+	if err != nil {
+		return "", err
+	}
 
-	return token.SignedString(m.secretKey)
+	tokenJwt := jwt.NewWithClaims(jwt.SigningMethodHS256, payload)
+	token, err := tokenJwt.SignedString([]byte(m.secretKey))
+
+	return token, err
 }
 
-func (m *Manager) Verify(token string) error {
+func (m *Manager) Verify(tokenReceived string) error {
 	var claims jwt.RegisteredClaims
 	token, err := jwt.ParseWithClaims(
-		token,
+		tokenReceived,
 		&claims,
 		m.keyFunc,
 		jwt.WithValidMethods([]string{"HS256"}),
