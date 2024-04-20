@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS "users" (
   "username" varchar UNIQUE NOT NULL,
   "email" varchar(200) UNIQUE NOT NULL,
   "phone" varchar(16),
-  "password" varchar(50) NOT NULL,
+  "password" varchar(150) NOT NULL,
   "affiliated" bool DEFAULT false,
   "created_at" timestamp DEFAULT (now()),
   "updated_at" timestamp
