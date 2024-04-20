@@ -28,7 +28,7 @@ func main() {
 	}
 
 	store := db.NewStore(conn)
-	jwtManager := jwt.NewManager(config.JWTSecretKey, config.JWTTokenExpiry)
+	jwtManager := jwt.NewManager([]byte(config.JWTSecretKey))
 
 	server, err := server.NewServer(config, *store, *jwtManager)
 	if err != nil {
