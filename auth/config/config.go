@@ -9,6 +9,7 @@ import (
 
 type Config struct {
 	GRPCServerAddress     string        `mapstructure:"GRPC_SERVER_ADDRESS"`
+	HTTPServerAddress     string        `mapstructure:"HTTP_SERVER_ADDRESS"`
 	DBDriver              string        `mapstructure:"DB_DRIVER"`
 	DBHost                string        `mapstructure:"DB_HOST"`
 	DBPort                string        `mapstructure:"DB_PORT"`

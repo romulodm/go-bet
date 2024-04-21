@@ -2,6 +2,7 @@ syntax = "proto3";
 
 package pb;
 
+import "google/api/annotations.proto";
 import "login_user.proto";
 import "register_user.proto";
 import "update_user.proto";
@@ -11,13 +12,24 @@ import "verify_email.proto";
 option go_package = "github.com/romulodm/gobet/auth/pb";
 
 service AuthenticationService {
-    rpc Login(LoginRequest) returns (LoginResponse);
-  
-    rpc Register(RegisterRequest) returns (RegisterResponse);
-  
-    rpc VerifyToken(VerifyTokenRequest) returns (VerifyTokenResponse);
-
-    rpc VerifyEmail(VerifyEmailRequest) returns (VerifyEmailResponse);
-  
-    rpc UpdateCredentials(UpdateCredentialsRequest) returns (UpdateCredentialsResponse);
+  rpc Login(LoginRequest) returns (LoginResponse) {
+    option (google.api.http) = {
+        post: "/v1/login"
+        body: "*"
+    };
   }
+  
+
+  rpc Register(RegisterRequest) returns (RegisterResponse) {
+    option (google.api.http) = {
+        post: "/v1/register"
+        body: "*"
+    };
+  }
+  
+  rpc VerifyToken(VerifyTokenRequest) returns (VerifyTokenResponse);
+
+  rpc VerifyEmail(VerifyEmailRequest) returns (VerifyEmailResponse);
+
+  rpc UpdateCredentials(UpdateCredentialsRequest) returns (UpdateCredentialsResponse);
+}
