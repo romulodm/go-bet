@@ -9,6 +9,7 @@ import (
 
 	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
 	_ "github.com/lib/pq"
+	"github.com/rs/cors"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
 
@@ -76,8 +77,10 @@ func runGateway(config config.Config, store db.Store, jwtManager jwt.Manager) {
 		log.Fatal("Cannot register handler server:", err)
 	}
 
+	corsHandler := cors.Default().Handler(grpcMux)
+
 	mux := http.NewServeMux()
-	mux.Handle("/", grpcMux)
+	mux.Handle("/", corsHandler)
 
 	listener, err := net.Listen("tcp", config.HTTPServerAddress)
 	if err != nil {
@@ -89,5 +92,4 @@ func runGateway(config config.Config, store db.Store, jwtManager jwt.Manager) {
 	if err != nil {
 		log.Fatal("Cannot start HTTP gateway server:", err)
 	}
-
 }
