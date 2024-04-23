@@ -5,6 +5,7 @@ import Login from "./Login";
 import Register from "./Register";
 import ResetPassword from "./ResetPassword";
 
+import CloseIcon from '@mui/icons-material/Close';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 
@@ -13,8 +14,6 @@ const modalStyle = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: "23em",
-    boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.5)',
 };
 
 const backdropStyle = {
@@ -75,8 +74,24 @@ export default function AuthenticationModal(props) {
         >
             <>
                 <div style={backdropStyle} onClick={handleClose}></div>
-                <Box sx={modalStyle} style={modalContentStyle}>
-                    <div className="flex flex-col rounded-md bg-background-color py-10 px-5">
+                <Box 
+                    sx={modalStyle} 
+                    style={modalContentStyle}
+                    className="w-full h-full sm:h-fit sm:w-96"
+                >
+                    <div className="flex flex-col h-full sm:rounded-md bg-background-color p-2 sm:py-5 px-5">
+                        <div className="relative sm:hidden">
+                            <div className="flex justify-between items-center sm:mb-5 dark:border-gray-600">
+                                <button
+                                    type="button"
+                                    className="text-gray-600 bg-transparent hover:bg-gray-700 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover-bg-gray-600 dark:hover-text-white"
+                                    onClick={handleClose}
+                                >
+                                    <CloseIcon/>
+                                </button>
+                            </div>
+                        </div>
+
                         {showLogin && (
                             <>
                                 <Login />
