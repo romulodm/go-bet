@@ -3,8 +3,8 @@ package errs
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
 	"log"
+	"os"
 	"path/filepath"
 )
 
@@ -25,19 +25,16 @@ func loadErrorMessages() error {
 		return err
 	}
 
-	// Lê o conteúdo do arquivo JSON
-	fileContent, err := ioutil.ReadFile(filePath)
+	fileContent, err := os.ReadFile(filePath)
 	if err != nil {
 		return err
 	}
 
-	// Decodifica o JSON
 	var errorMessagesJSON map[string]map[string]string
 	if err := json.Unmarshal(fileContent, &errorMessagesJSON); err != nil {
 		return err
 	}
 
-	// Converter para o formato desejado (ErrorMessages)
 	errorMessages = make(ErrorMessages)
 	for k, v := range errorMessagesJSON {
 		errorMessages[k] = v
