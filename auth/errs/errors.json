@@ -1,0 +1,16 @@
+{
+    "en-US": {
+      "USER_NOT_FOUND": "User not found.",
+      "INTERNAL_ERROR_SQL": "Internal SQL error.",
+      "INCORRECT_PASSWORD": "Incorrect password.",
+      "TOKEN_FAILURE": "Failed to generate token.",
+      "REFRESH_TOKEN_FAILURE": "Failed to generate refresh token."
+    },
+    "pt-BR": {
+      "USER_NOT_FOUND": "Usuário não encontrado.",
+      "INTERNAL_ERROR_SQL": "Erro interno no SQL.",
+      "INCORRECT_PASSWORD": "Senha incorreta.",
+      "TOKEN_FAILURE": "Falha ao gerar o token.",
+      "REFRESH_TOKEN_FAILURE": "Falha ao gerar o token de atualização."
+    }
+  }
