@@ -10,6 +10,7 @@ message RegisterRequest {
     string username = 1;
     string email = 2;
     string password = 3;
+    string language = 4;
 }
   
 message RegisterResponse {

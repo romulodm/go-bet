@@ -8,6 +8,7 @@ import (
 	"time"
 
 	db "github.com/romulodm/go-bet/auth/database/sqlc"
+	"github.com/romulodm/go-bet/auth/errs"
 	"github.com/romulodm/go-bet/auth/pb/github.com/romulodm/gobet/auth/pb"
 	"github.com/romulodm/go-bet/auth/utils"
 	"google.golang.org/genproto/googleapis/rpc/errdetails"
@@ -21,12 +22,15 @@ func (server *Server) Register(ctx context.Context, req *pb.RegisterRequest) (*p
 		return nil, invalidArgumentError(violations)
 	}
 
-	hashedPassword, err := utils.HashePassword(req.GetPassword())
-	if err != nil {
-		return nil, status.Errorf(codes.Internal, "failed to hash password: %s", err)
+	language := strings.ToLower(req.GetLanguage())
+	if language == "" {
+		language = errs.DEFAULT_LANGUAGE
 	}
 
-	fmt.Println(hashedPassword)
+	hashedPassword, err := utils.HashePassword(req.GetPassword())
+	if err != nil {
+		return nil, status.Errorf(codes.Internal, errs.GetErrorMessage(language, "REGISTER_HASH_FAILED"))
+	}
 
 	arg := db.CreateUserParams{
 		Username:  req.GetUsername(),
@@ -37,11 +41,16 @@ func (server *Server) Register(ctx context.Context, req *pb.RegisterRequest) (*p
 
 	createdUser, err := server.store.CreateUser(ctx, arg)
 	if err != nil {
-		if strings.Contains(err.Error(), "violates unique constraint") {
-			return nil, status.Errorf(codes.AlreadyExists, "violação única de chave")
+		fmt.Println("erro aq", err)
+		if strings.Contains(err.Error(), "users_email_key") {
+			return nil, status.Errorf(codes.AlreadyExists, errs.GetErrorMessage(language, "REGISTER_EMAIL_ALREADY_EXISTS"))
 		}
 
-		return nil, status.Errorf(codes.Internal, "internal error on sql query")
+		if strings.Contains(err.Error(), "users_username_key") {
+			return nil, status.Errorf(codes.AlreadyExists, errs.GetErrorMessage(language, "REGISTER_USERNAME_ALREADY_EXISTS"))
+		}
+
+		return nil, status.Errorf(codes.Internal, errs.GetErrorMessage(language, "REGISTER_INTERNAL_ERROR_SQL"))
 	}
 
 	rsp := &pb.RegisterResponse{
