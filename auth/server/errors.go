@@ -25,6 +25,18 @@ func invalidArgumentError(violations []*errdetails.BadRequest_FieldViolation) er
 	return statusDetails.Err()
 }
 
+func uniqueViolationError(message string, field string) error {
+	uniqueViolation := &errdetails.ErrorInfo{Domain: field}
+	statusInvalid := status.New(codes.AlreadyExists, message)
+
+	statusDetails, err := statusInvalid.WithDetails(uniqueViolation)
+	if err != nil {
+		return statusInvalid.Err()
+	}
+
+	return statusDetails.Err()
+}
+
 func unauthenticatedError(err error) error {
 	return status.Errorf(codes.Unauthenticated, "unauthorized: %s", err)
 }

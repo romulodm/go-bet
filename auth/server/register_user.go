@@ -3,7 +3,6 @@ package server
 import (
 	"context"
 	"database/sql"
-	"fmt"
 	"strings"
 	"time"
 
@@ -41,13 +40,12 @@ func (server *Server) Register(ctx context.Context, req *pb.RegisterRequest) (*p
 
 	createdUser, err := server.store.CreateUser(ctx, arg)
 	if err != nil {
-		fmt.Println("erro aq", err)
-		if strings.Contains(err.Error(), "users_email_key") {
-			return nil, status.Errorf(codes.AlreadyExists, errs.GetErrorMessage(language, "REGISTER_EMAIL_ALREADY_EXISTS"))
+		if strings.Contains(err.Error(), "users_username_key") {
+			return nil, uniqueViolationError(errs.GetErrorMessage(language, "REGISTER_USERNAME_ALREADY_EXISTS"), "username")
 		}
 
-		if strings.Contains(err.Error(), "users_username_key") {
-			return nil, status.Errorf(codes.AlreadyExists, errs.GetErrorMessage(language, "REGISTER_USERNAME_ALREADY_EXISTS"))
+		if strings.Contains(err.Error(), "users_email_key") {
+			return nil, uniqueViolationError(errs.GetErrorMessage(language, "REGISTER_EMAIL_ALREADY_EXISTS"), "email")
 		}
 
 		return nil, status.Errorf(codes.Internal, errs.GetErrorMessage(language, "REGISTER_INTERNAL_ERROR_SQL"))
