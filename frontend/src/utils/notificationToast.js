@@ -47,17 +47,21 @@ export function showWarningMessage(text) {
 function createNotification(type, text) {
     let notification = document.createElement('div');
     notification.classList.add('notification', type);
+    
+    let bgColor = type === 'success' ? 'bg-green-50' : type === 'error' ? 'bg-red-200' : 'bg-amber-100';
+    let hoverColor = type === 'success' ? 'hover:bg-green-200' : type === 'error' ? 'hover:bg-red-300' : 'hover:bg-amber-200';
+
     notification.innerHTML = `
         <p>${text}</p>
-        <button class="bg-${type === 'success' ? 'green' : type === 'error' ? 'red' : 'amber'}-50 hover:bg-${type === 'success' ? 'green' : type === 'error' ? 'red' : 'amber'}-200 rounded-lg p-2 close-button">
-            <img class="w-6 h-6" src="./close-${type === 'success' ? 'green' : type === 'error' ? 'red' : 'orange'}-icon.png" />
+        <button class="${bgColor} ${hoverColor} rounded-lg p-3 close-button">
+            <img class="w-6 h-6" src="./close-${type === 'success' ? 'green' : type === 'error' ? 'red' : 'orange'}-icon.svg" />
         </button>
     `;
 
     let closeButton = notification.querySelector('.close-button');
     closeButton.addEventListener('click', () => {
         notification.remove();
-        notificationList = notificationList.filter(item => item !== notification); // Remover a notificação da lista
+        notificationList = notificationList.filter(item => item !== notification);
     });
 
     return notification;
@@ -69,6 +73,6 @@ function displayNotification(notification) {
 
     setTimeout(() => { 
         notification.remove();
-        notificationList = notificationList.filter(item => item !== notification); // Remover a notificação da lista
+        notificationList = notificationList.filter(item => item !== notification);
     }, 5500);
 }
