@@ -11,15 +11,16 @@ export class MailService {
       await this.mailerService.sendMail({
         to: user.email,
         subject: 'Reset your password - Go Bet',
-        template: './reset-password.hbs',
+        template: 'reset-password',
         context: {
           name: user.name,
-          code,
+          code: code,
         },
       });
-      console.log("E-mail enviado com sucesso!");
-    } catch (error) {
-      console.error("Erro ao enviar e-mail:", error);
+      return `E-mail sended to ${user.email}`;
+    } catch (err) {
+      console.error(err);
+      throw new Error('Failed to send e-mail');
     }
   }
 }
