@@ -9,11 +9,24 @@ export class MailController {
   @Post('/reset-code')
   async codeToResetPassword(@Body() body: { user: User, code: string }, @Res() response: any) {
     const { user, code } = body;
-    const mail = await this.mailService.sendCodeToResetPassword(user, code);
+    if (!user || !user.email || !user.name) {
+      // Se o objeto user ou suas propriedades estiverem faltando, retorne um erro
+      return response.status(400).json({
+          message: 'bad-request'
+      });
+    }
 
-    return response.status(200).json({
-      message: 'success',
-      mail
-    });
+    try {
+      const mail = await this.mailService.sendCodeToResetPassword(user, code);
+      return response.status(200).json({
+        message: 'success',
+        mail
+      });
+    } catch (error) {
+      return response.status(500).json({
+        message: 'error',
+        error: error.message
+      });
+    }
   }
 }
