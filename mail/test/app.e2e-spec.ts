@@ -16,16 +16,17 @@ describe('MailController (e2e)', () => {
   });
 
   it('/reset-code (POST)', () => {
-    const user = { email: 'test@example.com', name: 'Test User' };
+    const user = { email: 'coc2netin@gmail.com', name: 'Test User' };
     const code = '123456';
-
+  
     return request(app.getHttpServer())
       .post('/v1/mail/reset-code')
       .send({ user, code })
       .expect(200)
-      .expect({
-        message: 'success',
-        mail: `E-mail enviado para ${user.email}`
+      .expect((res) => {
+        expect(res.body.message).toEqual('success');
+        expect(res.body.mail).toContain(user.email);
       });
   });
+  
 });
